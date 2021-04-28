@@ -9,3 +9,13 @@ before_install:
 
 script:
   - docker run -e CI=true lipao/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-079007343761"
+  bucket_path: "docker-react"
+  on:
+    branch: master
